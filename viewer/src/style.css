@@ -1,0 +1,127 @@
+/* Drafting-sheet HUD: tracing-paper panels and ink lines over the 3D view. */
+:root {
+  --ink: #1b2a3a;
+  --paper: #f3f5f2;
+  --rule: #b9c1c4;
+  --quiet: #5c6b78;
+  --mark: #c8372d;
+  --plumb: #2f6f9f;
+  --ok: #2e7d5b;
+  --warn: #9a6a12;
+  --gap: 12px;
+  font-family: "Barlow Semi Condensed", "Arial Narrow", system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.35;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; background: #0e1820; overflow: hidden; overscroll-behavior: none; }
+[hidden] { display: none !important; }
+
+#view { position: fixed; inset: 0; width: 100%; height: 100%; display: block; outline: none; touch-action: none; cursor: grab; }
+#view.locked { cursor: none; }
+#view.measuring { cursor: crosshair; }
+
+/* ---- tools ---------------------------------------------------------------- */
+#tools {
+  position: fixed; top: var(--gap); left: var(--gap);
+  display: flex; flex-wrap: wrap; gap: 0;
+  border: 1px solid var(--ink); background: var(--paper);
+}
+#tools button {
+  font: inherit; font-weight: 500; color: var(--ink);
+  background: transparent; border: 0; border-right: 1px solid var(--rule);
+  padding: 7px 13px; min-height: 36px; cursor: pointer;
+}
+#tools button:last-child { border-right: 0; }
+#tools button:hover { background: #e6eae7; }
+#tools button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+#tools button:focus-visible, #plan:focus-visible { outline: 2px solid var(--mark); outline-offset: 2px; }
+
+/* ---- report card ------------------------------------------------------------ */
+#card {
+  position: fixed; top: var(--gap); right: var(--gap);
+  width: 268px; max-height: calc(100vh - 2 * var(--gap)); overflow-y: auto;
+  background: var(--paper); border: 1px solid var(--ink);
+  padding: 12px 14px 10px;
+}
+#card h1 { font-size: 19px; font-weight: 600; margin: 0 0 2px; line-height: 1.2; }
+#card .sub { margin: 0 0 8px; color: var(--quiet); font-size: 13px; }
+#card h2 {
+  font-size: 13px; font-weight: 600; color: var(--quiet);
+  margin: 10px 0 2px; padding-top: 7px; border-top: 1px solid var(--ink);
+}
+#card dl { margin: 0; }
+#card .row { display: flex; justify-content: space-between; gap: 12px; padding: 2px 0; border-bottom: 1px solid #dfe4e1; }
+#card .row:last-child { border-bottom: 0; }
+#card dt { color: var(--quiet); }
+#card dd { margin: 0; font-weight: 500; text-align: right; }
+#card .ok { color: var(--ok); }
+#card .warn { color: var(--warn); }
+#card .bad { color: var(--mark); }
+
+/* ---- plan sheet ------------------------------------------------------------- */
+#sheet {
+  position: fixed; left: var(--gap); bottom: var(--gap);
+  width: min(300px, 46vw);
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  box-shadow: inset 0 0 0 3px var(--paper), inset 0 0 0 4px var(--ink); /* the double frame of a drawing sheet */
+  padding: 8px;
+}
+#plan { display: block; width: 100%; cursor: pointer; image-rendering: pixelated; }
+#titleblock {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; margin: 6px 0 0;
+  border: 1px solid var(--ink); font-size: 13px;
+}
+#titleblock > div { padding: 3px 6px 4px; border-right: 1px solid var(--ink); min-width: 0; }
+#titleblock > div:last-child { border-right: 0; }
+#titleblock > .wide { grid-column: 1 / -1; border-right: 0; border-bottom: 1px solid var(--ink); }
+#titleblock dt { color: var(--quiet); font-size: 11.5px; line-height: 1.2; }
+#titleblock dd { margin: 0; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#tb-bar { display: inline-block; height: 5px; margin-right: 5px; vertical-align: middle; border: 1px solid var(--ink);
+  background: linear-gradient(90deg, var(--ink) 50%, transparent 50%); }
+
+/* ---- hint, reticle, measurement ---------------------------------------------- */
+#hint {
+  position: fixed; bottom: var(--gap);
+  left: calc(min(300px, 46vw) + 3 * var(--gap)); right: calc(268px + 3 * var(--gap));
+  margin: 0 auto; padding: 7px 14px; max-width: 520px;
+  background: var(--ink); color: var(--paper); text-align: center;
+  transition: opacity 0.6s; pointer-events: none;
+}
+#hint.gone { opacity: 0; }
+#reticle {
+  position: fixed; left: 50%; top: 50%; width: 15px; height: 15px; margin: -8px 0 0 -8px; pointer-events: none;
+  background:
+    linear-gradient(var(--paper), var(--paper)) center / 15px 1px no-repeat,
+    linear-gradient(var(--paper), var(--paper)) center / 1px 15px no-repeat;
+  mix-blend-mode: difference;
+}
+#measure {
+  position: fixed; transform: translate(-50%, -150%); pointer-events: none;
+  background: var(--mark); color: #fff; font-weight: 600; padding: 2px 8px; white-space: nowrap;
+}
+
+/* ---- loading and errors -------------------------------------------------------- */
+#loading {
+  position: fixed; inset: 0; display: grid; place-content: center; justify-items: center; gap: 12px;
+  background: var(--ink); color: var(--paper); padding: 24px; text-align: center;
+}
+#loading p { margin: 0; font-size: 18px; max-width: 46ch; }
+#loading.error p { text-align: left; white-space: pre-line; }
+#loading-bar { width: min(280px, 70vw); height: 3px; background: rgba(243, 245, 242, 0.2); }
+#loading-fill { display: block; height: 100%; width: 0; background: var(--paper); transition: width 0.2s; }
+#loading.error #loading-bar { display: none; }
+
+@media (max-width: 760px) {
+  :root { --gap: 8px; font-size: 14px; }
+  #card { width: min(250px, 62vw); top: 54px; max-height: calc(100vh - 54px - 46vw - 40px); }
+  #hint { bottom: auto; top: 54px; left: var(--gap); right: var(--gap); max-width: none; }
+  #tools button { padding: 7px 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #hint, #loading-fill { transition: none; }
+}

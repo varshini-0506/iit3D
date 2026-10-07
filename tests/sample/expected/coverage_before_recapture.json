@@ -1,0 +1,119 @@
+{
+ "summary": {
+  "verdict": "RECAPTURE",
+  "surface_quality_pct": 80.4,
+  "walk_view_quality_pct": 96.7,
+  "blocking_items": 2,
+  "by_band": {
+   "floor_pct": 98.5,
+   "mid_pct": 95.6,
+   "high_pct": 42.1
+  },
+  "boundary_closure_pct": 100.0,
+  "open_boundary_m": 0.0,
+  "samples": 41158,
+  "median_views": 21.0,
+  "median_baseline_deg": 33.1,
+  "few_views_pct": 7.5,
+  "narrow_baseline_pct": 12.2,
+  "items": 3,
+  "estimated_recapture_s": 45
+ },
+ "items": [
+  {
+   "kind": "weak_surface",
+   "reason": "narrow_baseline",
+   "target": [
+    4.28,
+    2.17,
+    1.08
+   ],
+   "stand": [
+    3.2,
+    3.05
+   ],
+   "face_deg": -39.1,
+   "clear_view": true,
+   "area_m2": 0.62,
+   "nearest_keyframe": {
+    "name": "c00_000236.jpg",
+    "distance_m": 1.13,
+    "clip": 0,
+    "t": 23.6
+   },
+   "where": "4.4 m ahead of and 0.4 m to the left of where you started (facing the way you first faced)",
+   "instruction": "About 0.6 m2 of surface was only ever seen from one direction (views fan out by 10 degrees), so its depth is a guess. Keep it in frame and side-step about 1 m to each side. Move your feet; do not just pivot. Cover it top to bottom: sweep once at chest height, once tilted up, once tilted down. You were about 1.1 m from this spot at 0:23 of clip 0.",
+   "id": 1
+  },
+  {
+   "kind": "weak_surface",
+   "reason": "narrow_baseline",
+   "target": [
+    3.46,
+    3.39,
+    1.51
+   ],
+   "stand": [
+    3.4,
+    2.0
+   ],
+   "face_deg": 87.5,
+   "clear_view": true,
+   "area_m2": 0.38,
+   "nearest_keyframe": {
+    "name": "c00_000168.jpg",
+    "distance_m": 0.59,
+    "clip": 0,
+    "t": 16.8
+   },
+   "where": "3.9 m ahead of and 0.5 m to the right of where you started (facing the way you first faced)",
+   "instruction": "About 0.4 m2 of surface was only ever seen from one direction (views fan out by 10 degrees), so its depth is a guess. Keep it in frame and side-step about 1 m to each side. Move your feet; do not just pivot. Aim at about 1.4 m above the floor. You were about 0.6 m from this spot at 0:16 of clip 0.",
+   "id": 2
+  },
+  {
+   "kind": "ceiling",
+   "reason": "ceiling_undersampled",
+   "target": [
+    -0.0,
+    -0.0,
+    2.4
+   ],
+   "stand": [
+    -0.0,
+    -0.0
+   ],
+   "face_deg": 38.2,
+   "clear_view": true,
+   "nearest_keyframe": null,
+   "where": "anywhere: repeat your first lap",
+   "instruction": "Only 42% of the ceiling and upper walls is well observed. Walk one more slow lap of the room with the phone tilted up about 30 degrees, keeping the top of the walls in frame so the new footage ties in.",
+   "id": 3
+  }
+ ],
+ "nav": {
+  "floor_area_m2": 18.16,
+  "walkable_area_m2": 14.37,
+  "extent_m": [
+   6.05,
+   5.05
+  ],
+  "ceiling_height_m": 2.6,
+  "capture_path_m": 19.36
+ },
+ "config": {
+  "voxel": 0.05,
+  "max_points": 120000,
+  "max_range": 6.0,
+  "min_views": 4,
+  "min_baseline_deg": 12.0,
+  "cluster_cell": 0.1,
+  "min_cluster_m2": 0.12,
+  "stand_dist": 1.4,
+  "max_items": 8,
+  "ceiling_from": 2.0,
+  "split_tile": 2.0,
+  "ready_surface_pct": 90.0,
+  "blocking_m2": 0.25,
+  "ready_closure_pct": 90.0
+ }
+}

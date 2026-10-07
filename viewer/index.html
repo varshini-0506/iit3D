@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1b2a3a">
+  <title>NammaTwin viewer</title>
+</head>
+<body>
+  <canvas id="view" tabindex="0" aria-label="3D view of the scanned space"></canvas>
+
+  <div id="reticle" hidden aria-hidden="true"></div>
+  <div id="measure" hidden></div>
+
+  <nav id="tools" aria-label="View tools" hidden>
+    <button id="btn-fly" type="button" aria-pressed="false" title="Leave the floor and fly (F)">Fly</button>
+    <button id="btn-measure" type="button" aria-pressed="false" title="Measure between two points (M)">Measure</button>
+    <button id="btn-tour" type="button" aria-pressed="false" title="Replay the path the camera took (T)">Tour</button>
+    <button id="btn-coverage" type="button" aria-pressed="false" title="Show capture coverage on the plan (C)">Coverage</button>
+    <button id="btn-report" type="button" aria-pressed="true" title="Show or hide the report (R)">Report</button>
+  </nav>
+
+  <aside id="card" aria-label="Twin report" hidden></aside>
+
+  <section id="sheet" aria-label="Floor plan" hidden>
+    <canvas id="plan" title="Click a spot to walk there"></canvas>
+    <dl id="titleblock">
+      <div class="wide"><dt>Plan</dt><dd id="tb-title"></dd></div>
+      <div><dt>Floor area</dt><dd id="tb-area"></dd></div>
+      <div><dt>Route</dt><dd id="tb-route">none</dd></div>
+      <div><dt>Scale</dt><dd><span id="tb-bar"></span><span id="tb-bar-label">1 m</span></dd></div>
+    </dl>
+  </section>
+
+  <p id="hint" hidden></p>
+
+  <div id="loading" role="status">
+    <p id="loading-text">Opening the scene</p>
+    <div id="loading-bar"><span id="loading-fill"></span></div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+ "title": "Sample room (synthetic)",
+ "up": "z",
+ "units": "m",
+ "nav": "nav.json",
+ "report": "report.json",
+ "splat": "scene.ply",
+ "coverage": "coverage.png",
+ "coverage_grid": {
+  "cell": 0.05,
+  "x0": -1.2287540998706823,
+  "y0": -1.1135709589243672,
+  "width": 121,
+  "height": 101
+ }
+}

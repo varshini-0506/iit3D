@@ -1,0 +1,6 @@
+# CPU-side tools (linter, alignment, coverage audit, nav grid, report card).
+# The GPU stages (MapAnything, gsplat) are installed by scripts/setup_gpu.sh.
+numpy>=1.26
+scipy>=1.11
+opencv-contrib-python-headless>=4.9
+matplotlib>=3.8

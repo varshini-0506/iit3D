@@ -1,0 +1,5 @@
+# For running the tests.
+-r requirements.txt
+pytest>=8
+pycolmap==4.2.1     # tests/test_pipeline_script.sh and scripts/final_poses_colmap.py
+playwright>=1.45    # tests/viewer_smoke.py (also needs a Chromium: `playwright install chromium`)

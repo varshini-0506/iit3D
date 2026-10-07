@@ -1,0 +1,56 @@
+{
+ "title": "Sample room (synthetic)",
+ "generated": "2026-10-06 06:46",
+ "pipeline": "NammaTwin 0.1",
+ "capture": {
+  "verdict": "PASS",
+  "score": 84.6,
+  "clips": 2,
+  "duration_s": 104.4,
+  "keyframes": 343,
+  "blurry_pct": 4.7,
+  "too_fast_pct": 1.6,
+  "loop_closed": false
+ },
+ "coverage": {
+  "verdict": "READY",
+  "walk_view_quality_pct": 99.4,
+  "ceiling_quality_pct": 46.3,
+  "boundary_closure_pct": 100.0,
+  "open_items": 2,
+  "median_views": 29.0,
+  "median_baseline_deg": 37.2
+ },
+ "geometry": {
+  "scale_source": "marker",
+  "floor_rms_cm": 0.67,
+  "camera_height_m": 1.448,
+  "model_scale_error_pct": 3.04,
+  "marker_error_pct": -0.0,
+  "marker_error_cm_per_m": 0.0,
+  "marker_sightings": 21,
+  "marker_independent": false
+ },
+ "space": {
+  "floor_area_m2": 18.28,
+  "walkable_area_m2": 14.46,
+  "extent_m": [
+   6.05,
+   5.05
+  ],
+  "ceiling_height_m": 2.6,
+  "capture_path_m": 22.4,
+  "boundary_closure_pct": 100.0
+ },
+ "asset": {
+  "file": "scene.sog",
+  "size_mb": 0.66,
+  "gaussians": 111636
+ },
+ "timings_min": {
+  "lint": 0.5,
+  "align": 0.3,
+  "audit": 0.0,
+  "total": 1.2
+ }
+}

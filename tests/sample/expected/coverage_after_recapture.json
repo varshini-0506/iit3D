@@ -1,0 +1,94 @@
+{
+ "summary": {
+  "verdict": "READY",
+  "surface_quality_pct": 83.8,
+  "walk_view_quality_pct": 99.4,
+  "blocking_items": 0,
+  "by_band": {
+   "floor_pct": 99.4,
+   "mid_pct": 99.3,
+   "high_pct": 46.3
+  },
+  "boundary_closure_pct": 100.0,
+  "open_boundary_m": 0.0,
+  "samples": 41129,
+  "median_views": 29.0,
+  "median_baseline_deg": 37.2,
+  "few_views_pct": 6.9,
+  "narrow_baseline_pct": 9.3,
+  "items": 2,
+  "estimated_recapture_s": 30
+ },
+ "items": [
+  {
+   "kind": "ceiling",
+   "reason": "ceiling_undersampled",
+   "target": [
+    -0.0,
+    -0.0,
+    2.4
+   ],
+   "stand": [
+    -0.0,
+    -0.0
+   ],
+   "face_deg": 38.3,
+   "clear_view": true,
+   "nearest_keyframe": null,
+   "where": "anywhere: repeat your first lap",
+   "instruction": "Only 46% of the ceiling and upper walls is well observed. Walk one more slow lap of the room with the phone tilted up about 30 degrees, keeping the top of the walls in frame so the new footage ties in.",
+   "id": 1
+  },
+  {
+   "kind": "weak_surface",
+   "reason": "narrow_baseline",
+   "target": [
+    4.27,
+    2.17,
+    1.57
+   ],
+   "stand": [
+    3.35,
+    1.11
+   ],
+   "face_deg": 48.9,
+   "clear_view": true,
+   "area_m2": 0.17,
+   "nearest_keyframe": {
+    "name": "c00_000162.jpg",
+    "distance_m": 0.29,
+    "clip": 0,
+    "t": 16.2
+   },
+   "where": "3.3 m ahead of and 1.2 m to the right of where you started (facing the way you first faced)",
+   "instruction": "About 0.2 m2 of surface was only ever seen from one direction (views fan out by 9 degrees), so its depth is a guess. Keep it in frame and side-step about 1 m to each side. Move your feet; do not just pivot. Cover it top to bottom: sweep once at chest height, once tilted up, once tilted down. You were about 0.3 m from this spot at 0:16 of clip 0.",
+   "id": 2
+  }
+ ],
+ "nav": {
+  "floor_area_m2": 17.98,
+  "walkable_area_m2": 14.15,
+  "extent_m": [
+   6.05,
+   5.05
+  ],
+  "ceiling_height_m": 2.6,
+  "capture_path_m": 22.4
+ },
+ "config": {
+  "voxel": 0.05,
+  "max_points": 120000,
+  "max_range": 6.0,
+  "min_views": 4,
+  "min_baseline_deg": 12.0,
+  "cluster_cell": 0.1,
+  "min_cluster_m2": 0.12,
+  "stand_dist": 1.4,
+  "max_items": 8,
+  "ceiling_from": 2.0,
+  "split_tile": 2.0,
+  "ready_surface_pct": 90.0,
+  "blocking_m2": 0.25,
+  "ready_closure_pct": 90.0
+ }
+}
